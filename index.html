@@ -188,6 +188,12 @@
             gap: 18px;
         }
 
+        .section-note {
+            margin: 0 0 16px;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
         .plugin-card {
             position: relative;
             padding: 18px 18px 16px;
@@ -218,6 +224,38 @@
         .plugin-card p {
             margin: 0 0 14px;
             color: var(--muted);
+        }
+
+        .downloads {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .download-link {
+            display: block;
+            padding: 4px 0;
+            border: 0;
+            color: var(--cyan);
+            text-decoration: none;
+            letter-spacing: 0.03em;
+            font-size: 0.88rem;
+            font-family: "Courier New", monospace;
+            background: transparent;
+            box-shadow: none;
+            transition: color 120ms ease, text-shadow 120ms ease;
+        }
+
+        .download-link::before {
+            content: "> ";
+            color: var(--pink);
+        }
+
+        .download-link:hover,
+        .download-link:focus-visible {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(114, 247, 255, 0.24);
         }
 
         .status {
@@ -269,6 +307,7 @@
                 padding: 18px;
             }
 
+
             footer {
                 flex-direction: column;
             }
@@ -292,6 +331,9 @@
             <main>
                 <section aria-labelledby="plugins-title">
                     <h2 class="panel-title" id="plugins-title">Current signal</h2>
+                    <!--p class="section-note">
+                        Dejé los enlaces listos para que pegues tus URLs de GitHub Releases directamente en cada botón.
+                    </p-->
 
                     <div class="plugins">
                         <article class="plugin-card">
@@ -300,7 +342,17 @@
                                 Saturación de carácter vintage con dirección sonora inspirada en máquinas,
                                 texturas y color del universo Geloso.
                             </p>
-                            <span class="status alt">Disponible / en desarrollo</span>
+                            <span class="status alt">Próximamente</span>
+                            <div class="downloads">
+                                <a class="download-link"
+                                   href="https://github.com/TU-USUARIO/TU-REPO/releases/latest/download/GelosoDrive-macOS.zip"
+                                   target="_blank"
+                                   rel="noopener noreferrer">MacOS</a>
+                                <a class="download-link"
+                                   href="https://github.com/TU-USUARIO/TU-REPO/releases/latest/download/GelosoDrive-Windows.zip"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Windows</a>
+                            </div>
                         </article>
 
                         <article class="plugin-card">
@@ -309,7 +361,17 @@
                                 Saturador asimétrico o simétrico enfocado en armónicos, color y respuesta
                                 expresiva para empujar una señal más allá de lo obvio.
                             </p>
-                            <span class="status">Próximamente</span>
+                            <span class="status">Disponible / en desarrollo</span>
+                            <div class="downloads">
+                                <a class="download-link"
+                                   href="https://github.com/gasalvo/gasalvo.github.io/releases/download/0.1.0-BETA/ASymmetrical-Saturator-macOS-vst3.zip"
+                                   target="_blank"
+                                   rel="noopener noreferrer">MacOS</a>
+                                <a class="download-link"
+                                   href="https://github.com/TU-USUARIO/TU-REPO/releases/latest/download/ASymmetricalSaturator-Windows.zip"
+                                   target="_blank"
+                                   rel="noopener noreferrer">Windows</a>
+                            </div>
                         </article>
                     </div>
                 </section>
@@ -320,9 +382,9 @@
                     <strong>SG AUDIO</strong><br>
                     Página experimental para GitHub Pages.
                 </div>
-                <div>
+                <!--div>
                     <a class="small-link" href="./index.html">Ver versión original</a>
-                </div>
+                </div-->
             </footer>
         </div>
     </div>
