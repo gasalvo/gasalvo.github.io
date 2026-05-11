@@ -3,16 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SG AUDIO</title>
-    <meta name="description" content="SG AUDIO - Plugins.">
+    <title>SG AUDIO — Retro Future</title>
+    <meta name="description" content="SG AUDIO - versión retro futurista con GelosoDrive y ASymmetricalSaturator.">
     <style>
         :root {
-            --paper: #efe3c2;
-            --ink: #2d2117;
-            --panel: #d1b57a;
-            --accent: #8b3f1f;
-            --accent-dark: #5b2613;
-            --line: #3a2a1a;
+            --bg-top: #120321;
+            --bg-bottom: #05010d;
+            --panel: rgba(11, 15, 39, 0.78);
+            --line: rgba(110, 236, 255, 0.45);
+            --cyan: #72f7ff;
+            --pink: #ff63c3;
+            --purple: #8b5dff;
+            --sun: #ffb347;
+            --text: #f7f4ff;
+            --muted: #d2c8ff;
+            --shadow: rgba(0, 0, 0, 0.45);
         }
 
         * {
@@ -20,177 +25,306 @@
         }
 
         html {
-            background: #b38b4d;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.08)),
-                repeating-linear-gradient(
-                    0deg,
-                    rgba(58, 42, 26, 0.04) 0,
-                    rgba(58, 42, 26, 0.04) 2px,
-                    transparent 2px,
-                    transparent 8px
-                );
+            min-height: 100%;
+            background:
+                radial-gradient(circle at 50% 28%, rgba(255, 179, 71, 0.18), transparent 18%),
+                linear-gradient(180deg, var(--bg-top) 0%, #18042d 35%, var(--bg-bottom) 100%);
+            background-color: var(--bg-bottom);
         }
 
         body {
             margin: 0;
             min-height: 100vh;
-            color: var(--ink);
-            font-family: "Georgia", "Times New Roman", serif;
+            color: var(--text);
+            font-family: "Trebuchet MS", "Verdana", sans-serif;
             line-height: 1.5;
-            padding: 24px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background:
+                linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.01)),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(255, 255, 255, 0.04) 0,
+                    rgba(255, 255, 255, 0.04) 1px,
+                    transparent 1px,
+                    transparent 4px
+                );
+            mix-blend-mode: soft-light;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .scene {
+            position: relative;
+            min-height: 100vh;
+            padding: 32px 18px 40px;
+        }
+
+        .scene::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 160px;
+            height: 36vh;
+            background:
+                linear-gradient(180deg, rgba(255, 99, 195, 0) 0%, rgba(255, 99, 195, 0.12) 100%),
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(114, 247, 255, 0.22) 0,
+                    rgba(114, 247, 255, 0.22) 2px,
+                    transparent 2px,
+                    transparent 78px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(114, 247, 255, 0.18) 0,
+                    rgba(114, 247, 255, 0.18) 2px,
+                    transparent 2px,
+                    transparent 48px
+                );
+            transform: perspective(300px) rotateX(76deg);
+            transform-origin: bottom center;
+            opacity: 0.58;
+            pointer-events: none;
+        }
+
+        .sun {
+            width: min(240px, 54vw);
+            aspect-ratio: 1;
+            margin: 12px auto -38px;
+            border-radius: 50%;
+            position: relative;
+            background:
+                linear-gradient(180deg, #ffe08a 0%, #ffb347 40%, #ff6a88 100%);
+            box-shadow:
+                0 0 35px rgba(255, 179, 71, 0.35),
+                0 0 90px rgba(255, 99, 195, 0.22);
+            overflow: hidden;
+        }
+
+        .sun::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                180deg,
+                transparent 0,
+                transparent 16px,
+                rgba(18, 3, 33, 0.34) 16px,
+                rgba(18, 3, 33, 0.34) 22px
+            );
         }
 
         .page {
-            max-width: 880px;
+            position: relative;
+            max-width: 980px;
             margin: 0 auto;
-            background: var(--paper);
-            border: 4px solid var(--line);
-            box-shadow: 10px 10px 0 rgba(45, 33, 23, 0.28);
+            padding: 26px;
+            border: 1px solid var(--line);
+            background:
+                linear-gradient(180deg, rgba(18, 16, 48, 0.9), rgba(5, 3, 17, 0.9)),
+                var(--panel);
+            box-shadow:
+                0 0 0 2px rgba(255, 99, 195, 0.08),
+                0 18px 45px var(--shadow),
+                0 0 34px rgba(114, 247, 255, 0.12);
+            backdrop-filter: blur(4px);
         }
 
         header {
-            padding: 28px 24px 16px;
-            border-bottom: 4px double var(--line);
-            background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(0,0,0,0.04));
+            display: grid;
+            gap: 12px;
+            margin-bottom: 26px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            margin: 0;
+            color: var(--cyan);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            font-size: 0.85rem;
         }
 
         .brand {
             margin: 0;
-            font-size: clamp(2.2rem, 7vw, 4.8rem);
+            font-family: "Courier New", monospace;
+            font-size: clamp(2.4rem, 10vw, 5.8rem);
             line-height: 0.95;
-            letter-spacing: 0.08em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
+            color: #fff3ff;
+            text-shadow:
+                3px 0 0 var(--pink),
+                -3px 0 0 var(--cyan),
+                0 0 18px rgba(255, 99, 195, 0.42);
         }
 
-        .tagline {
-            margin: 12px 0 0;
+        .intro {
+            max-width: 720px;
+            margin: 0 auto;
+            color: var(--muted);
             font-size: 1rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
         }
 
-        main {
-            padding: 20px 24px 28px;
-        }
-
-        .notice {
-            margin: 0 0 24px;
-            padding: 12px 14px;
-            border: 2px solid var(--line);
-            background: rgba(139, 63, 31, 0.08);
-            font-size: 0.98rem;
-        }
-
-        h2 {
-            margin: 0 0 14px;
-            font-size: 1.15rem;
-            letter-spacing: 0.12em;
+        .panel-title {
+            margin: 0 0 16px;
+            font-size: 0.92rem;
+            letter-spacing: 0.22em;
+            color: var(--cyan);
             text-transform: uppercase;
         }
 
         .plugins {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
         }
 
-        .plugin {
-            padding: 16px;
-            background: var(--panel);
-            border: 3px solid var(--line);
+        .plugin-card {
+            position: relative;
+            padding: 18px 18px 16px;
+            border: 1px solid rgba(114, 247, 255, 0.4);
+            background:
+                linear-gradient(180deg, rgba(139, 93, 255, 0.14), rgba(255, 99, 195, 0.08)),
+                rgba(9, 13, 31, 0.86);
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+                0 0 20px rgba(114, 247, 255, 0.08);
         }
 
-        .plugin h3 {
+        .plugin-card::before {
+            content: "";
+            position: absolute;
+            inset: 10px;
+            border: 1px solid rgba(255, 99, 195, 0.18);
+            pointer-events: none;
+        }
+
+        .plugin-name {
             margin: 0 0 10px;
-            font-size: 1.45rem;
-            line-height: 1.1;
+            font-size: 1.6rem;
+            line-height: 1.05;
+            color: var(--text);
         }
 
-        .plugin p {
-            margin: 0;
+        .plugin-card p {
+            margin: 0 0 14px;
+            color: var(--muted);
         }
 
-        .stamp {
+        .status {
             display: inline-block;
-            margin-top: 12px;
-            padding: 4px 8px;
-            border: 2px solid var(--accent-dark);
-            color: var(--accent-dark);
-            font-size: 0.82rem;
-            letter-spacing: 0.12em;
+            padding: 6px 10px;
+            border: 1px solid currentColor;
+            color: var(--pink);
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
+            background: rgba(255, 99, 195, 0.08);
+        }
+
+        .status.alt {
+            color: var(--cyan);
+            background: rgba(114, 247, 255, 0.08);
         }
 
         footer {
-            padding: 16px 24px 24px;
-            border-top: 4px double var(--line);
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(114, 247, 255, 0.28);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 18px;
+            justify-content: space-between;
+            color: var(--muted);
             font-size: 0.92rem;
         }
 
-        a {
-            color: var(--accent-dark);
+        .small-link {
+            color: var(--cyan);
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(114, 247, 255, 0.6);
+        }
+
+        .small-link:hover,
+        .small-link:focus-visible {
+            color: #ffffff;
+            border-bottom-color: #ffffff;
         }
 
         @media (max-width: 640px) {
-            body {
-                padding: 12px;
+            .scene {
+                padding: 18px 10px 28px;
             }
 
             .page {
-                box-shadow: 6px 6px 0 rgba(45, 33, 23, 0.24);
+                padding: 18px;
             }
 
-            header,
-            main,
             footer {
-                padding-left: 16px;
-                padding-right: 16px;
+                flex-direction: column;
             }
         }
     </style>
 </head>
 <body>
-    <div class="page">
-        <header>
-            <p class="tagline">Audio tools from another timeline</p>
-            <h1 class="brand">SG AUDIO</h1>
-        </header>
+    <div class="scene">
+        <div class="sun" aria-hidden="true"></div>
 
-        <main>
-            <p class="notice">
-                Sitio inicial. Simple, directo y en construcción.
-                Acá van a vivir los plugins y experimentos de SG AUDIO.
-            </p>
+        <div class="page">
+            <header>
+                <p class="eyebrow">Retro future audio transmission</p>
+                <h1 class="brand">SG AUDIO</h1>
+                <p class="intro">
+                    Plugins con espíritu analógico, brillo nocturno y una línea temporal donde el arcade,
+                    el city pop y la saturación convivieron desde el comienzo.
+                </p>
+            </header>
 
-            <section aria-labelledby="plugins-title">
-                <h2 id="plugins-title">Plugins</h2>
+            <main>
+                <section aria-labelledby="plugins-title">
+                    <h2 class="panel-title" id="plugins-title">Current signal</h2>
 
-                <div class="plugins">
-                    <article class="plugin">
-                        <h3>GelosoDrive</h3>
-                        <p>
-                            Saturación inspirada en carácter vintage, con una dirección sonora ligada al mundo Geloso.
-                        </p>
-                        <span class="stamp">Disponible / en desarrollo</span>
-                    </article>
+                    <div class="plugins">
+                        <article class="plugin-card">
+                            <h3 class="plugin-name">GelosoDrive</h3>
+                            <p>
+                                Saturación de carácter vintage con dirección sonora inspirada en máquinas,
+                                texturas y color del universo Geloso.
+                            </p>
+                            <span class="status alt">Disponible / en desarrollo</span>
+                        </article>
 
-                    <article class="plugin">
-                        <h3>ASymmetricalSaturator</h3>
-                        <p>
-                            Saturador asimétrico o simétrico enfocado armónicos.
-                        </p>
-                        <span class="stamp">Próximamente</span>
-                    </article>
+                        <article class="plugin-card">
+                            <h3 class="plugin-name">ASymmetricalSaturator</h3>
+                            <p>
+                                Saturador asimétrico o simétrico enfocado en armónicos, color y respuesta
+                                expresiva para empujar una señal más allá de lo obvio.
+                            </p>
+                            <span class="status">Próximamente</span>
+                        </article>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <div>
+                    <strong>SG AUDIO</strong><br>
+                    Página experimental para GitHub Pages.
                 </div>
-            </section>
-        </main>
-
-        <footer>
-            <strong>SG AUDIO</strong><br>
-            Plugins. <br>
-            Hecho para GitHub Pages.
-        </footer>
+                <div>
+                    <a class="small-link" href="./index.html">Ver versión original</a>
+                </div>
+            </footer>
+        </div>
     </div>
 </body>
 </html>
