@@ -1,5 +1,6 @@
 ## Hi there 👋
 
+I'm starting with VST3 plugins. Wish me luck... 
 <!--
 **gasalvo/gasalvo** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
