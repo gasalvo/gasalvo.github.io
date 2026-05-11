@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SG AUDIO</title>
+    <meta name="description" content="SG AUDIO - Plugins.">
+    <style>
+        :root {
+            --paper: #efe3c2;
+            --ink: #2d2117;
+            --panel: #d1b57a;
+            --accent: #8b3f1f;
+            --accent-dark: #5b2613;
+            --line: #3a2a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            background: #b38b4d;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.07), rgba(0, 0, 0, 0.08)),
+                repeating-linear-gradient(
+                    0deg,
+                    rgba(58, 42, 26, 0.04) 0,
+                    rgba(58, 42, 26, 0.04) 2px,
+                    transparent 2px,
+                    transparent 8px
+                );
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--ink);
+            font-family: "Georgia", "Times New Roman", serif;
+            line-height: 1.5;
+            padding: 24px;
+        }
+
+        .page {
+            max-width: 880px;
+            margin: 0 auto;
+            background: var(--paper);
+            border: 4px solid var(--line);
+            box-shadow: 10px 10px 0 rgba(45, 33, 23, 0.28);
+        }
+
+        header {
+            padding: 28px 24px 16px;
+            border-bottom: 4px double var(--line);
+            background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(0,0,0,0.04));
+        }
+
+        .brand {
+            margin: 0;
+            font-size: clamp(2.2rem, 7vw, 4.8rem);
+            line-height: 0.95;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .tagline {
+            margin: 12px 0 0;
+            font-size: 1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        main {
+            padding: 20px 24px 28px;
+        }
+
+        .notice {
+            margin: 0 0 24px;
+            padding: 12px 14px;
+            border: 2px solid var(--line);
+            background: rgba(139, 63, 31, 0.08);
+            font-size: 0.98rem;
+        }
+
+        h2 {
+            margin: 0 0 14px;
+            font-size: 1.15rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .plugins {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .plugin {
+            padding: 16px;
+            background: var(--panel);
+            border: 3px solid var(--line);
+        }
+
+        .plugin h3 {
+            margin: 0 0 10px;
+            font-size: 1.45rem;
+            line-height: 1.1;
+        }
+
+        .plugin p {
+            margin: 0;
+        }
+
+        .stamp {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 8px;
+            border: 2px solid var(--accent-dark);
+            color: var(--accent-dark);
+            font-size: 0.82rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        footer {
+            padding: 16px 24px 24px;
+            border-top: 4px double var(--line);
+            font-size: 0.92rem;
+        }
+
+        a {
+            color: var(--accent-dark);
+        }
+
+        @media (max-width: 640px) {
+            body {
+                padding: 12px;
+            }
+
+            .page {
+                box-shadow: 6px 6px 0 rgba(45, 33, 23, 0.24);
+            }
+
+            header,
+            main,
+            footer {
+                padding-left: 16px;
+                padding-right: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <p class="tagline">Audio tools from another timeline</p>
+            <h1 class="brand">SG AUDIO</h1>
+        </header>
+
+        <main>
+            <p class="notice">
+                Sitio inicial. Simple, directo y en construcción.
+                Acá van a vivir los plugins y experimentos de SG AUDIO.
+            </p>
+
+            <section aria-labelledby="plugins-title">
+                <h2 id="plugins-title">Plugins</h2>
+
+                <div class="plugins">
+                    <article class="plugin">
+                        <h3>GelosoDrive</h3>
+                        <p>
+                            Saturación inspirada en carácter vintage, con una dirección sonora ligada al mundo Geloso.
+                        </p>
+                        <span class="stamp">Disponible / en desarrollo</span>
+                    </article>
+
+                    <article class="plugin">
+                        <h3>ASymmetricalSaturator</h3>
+                        <p>
+                            Saturador asimétrico o simétrico enfocado armónicos.
+                        </p>
+                        <span class="stamp">Próximamente</span>
+                    </article>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <strong>SG AUDIO</strong><br>
+            Plugins. <br>
+            Hecho para GitHub Pages.
+        </footer>
+    </div>
+</body>
+</html>
+
