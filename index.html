@@ -184,7 +184,7 @@
 
         .plugins {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 18px;
         }
 
@@ -298,6 +298,11 @@
             border-bottom-color: #ffffff;
         }
 
+        @media (max-width: 900px) {
+            .plugins {
+                grid-template-columns: 1fr;
+            }
+        }
         @media (max-width: 640px) {
             .scene {
                 padding: 18px 10px 28px;
@@ -306,7 +311,6 @@
             .page {
                 padding: 18px;
             }
-
 
             footer {
                 flex-direction: column;
@@ -376,7 +380,7 @@
                         <article class="plugin-card">
                             <h3 class="plugin-name">ShapeShifter V2</h3>
                             <p>
-                                Evolución del proyecto ShapeShifter, con mejoras en estructura, scripts y compatibilidad. Pensado para nuevos desarrollos de plugins con JUCE y C++20.
+                                Evolución del proyecto ShapeShifter, con mejoras en estructura, scripts y compatibilidad.
                             </p>
                             <span class="status">Plugin / En desarrollo</span>
                             <div class="downloads">
@@ -388,7 +392,7 @@
                         <article class="plugin-card">
                             <h3 class="plugin-name">GuidoSantoor</h3>
                             <p>
-                                Instrumento virtual basado en samples de Santoor, con motor de samples, mapeo MIDI y banco de sonidos demo. Ideal para explorar síntesis sampleada y control MIDI.
+                                Instrumento virtual basado en samples de Santoor, con motor de samples, mapeo MIDI y banco de sonidos demo.
                             </p>
                             <span class="status">Instrumento / En desarrollo</span>
                             <div class="downloads">
